@@ -1,5 +1,7 @@
 # Distributed LLaMA Training with PEFT
 
+Large-scale LLM training implementation with distributed data parallel, developed as part of a project for NYU's Big Data and Machine Learning Systems course.
+
 ## Project Overview
 
 This project implements distributed training of the LLaMA language model using PyTorch's Distributed Data Parallel (DDP) and Parameter-Efficient Fine-Tuning (PEFT). The implementation showcases efficient training practices for large language models in a distributed computing environment.
