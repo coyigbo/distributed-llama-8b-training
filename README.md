@@ -107,4 +107,4 @@ Trains LLaMA using PyTorch’s `Pipe` for pipeline parallelism, distributing lay
 ## Acknowledgements
 
 This work was completed as part of the **Big Data and Machine Learning Systems** course at **New York University**.  
-Training was conducted on the **NYU High Performance Computing (HPC)** cluster.
+Training was conducted on the **NYU High Performance Computing (HPC)** cluster across multiple Nvidia A100 GPUs.
