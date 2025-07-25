@@ -4,7 +4,7 @@
 [![PyTorch](https://img.shields.io/badge/Framework-PyTorch-orange)](https://pytorch.org)
 [![Training Platform](https://img.shields.io/badge/Training%20Platform-NYU%20HPC-blue)](https://hpc.nyu.edu)
 
-Developed for the **Big Data and Machine Learning Systems** course at **New York University**, this project explores large-scale training of the LLaMA language model using three distributed training strategies. All models were trained using **NYU’s High Performance Computing (HPC)** infrastructure.
+I developed this project as part of the **Big Data and Machine Learning Systems** course at **New York University**. It explores large-scale training of an **8-billion parameter LLaMA language model** using three distributed training strategies. All models were trained on **NYU’s High Performance Computing (HPC)** infrastructure.
 
 ---
 
@@ -20,12 +20,11 @@ This repository demonstrates three advanced strategies for distributed training 
 
 ## Project Structure
 
-├── train_ddp_peft.py # DDP + PEFT training script
-├── train_llama_tp.py # Tensor Parallelism training script
-├── train_llama_pp.py # Pipeline Parallelism training script
-├── data/ # Input text data
-└── README.md # This file
-
+- `train_ddp_peft.py` – DDP + PEFT training script  
+- `train_llama_tp.py` – Tensor Parallelism training script  
+- `train_llama_pp.py` – Pipeline Parallelism training script  
+- `data/` – Input text data  
+- `README.md` – This file
 
 ---
 
