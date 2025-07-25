@@ -29,7 +29,7 @@ This repository demonstrates three advanced strategies for distributed training 
 
 ## 1. DDP + Parameter-Efficient Fine-Tuning (LoRA)
 
-Fine-tunes a LLaMA 3.2B model using PyTorch's DistributedDataParallel (DDP) and LoRA (Low-Rank Adaptation) for memory-efficient adaptation.
+Fine-tunes LLaMA 3.2 8B model using PyTorch's DistributedDataParallel (DDP) and LoRA (Low-Rank Adaptation) for memory-efficient adaptation.
 
 **Key Features:**
 
@@ -54,7 +54,7 @@ Fine-tunes a LLaMA 3.2B model using PyTorch's DistributedDataParallel (DDP) and 
 
 ## 2. LLaMA Training with Tensor Parallelism
 
-Implements tensor parallelism using PyTorch to split model weights column-wise across GPUs.
+Implements tensor parallelism using PyTorch to split model weights column-wise across multiple GPUs.
 
 **Key Features:**
 
