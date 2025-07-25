@@ -1,6 +1,6 @@
 # Distributed LLaMA Training with PEFT
 
-Large-scale LLM training implementation with distributed data parallel, developed as part of a project for NYU's Big Data and Machine Learning Systems course.
+Large-scale LLM training implementation with distributed data parallel, developed as part of a project for NYU's Big Data and Machine Learning Systems course, leveraging NYU’s High Performance Computing (HPC) clusters for distributed training.
 
 ## Project Overview
 
