@@ -22,8 +22,7 @@ This repository demonstrates three advanced strategies for distributed training 
 
 - `train_llama_ddp.py` – DDP + PEFT training script  
 - `train_llama_tp.py` – Tensor Parallelism training script  
-- `train_llama_pp.py` – Pipeline Parallelism training script  
-- `data/` – Input text data  
+- `train_llama_pp.py` – Pipeline Parallelism training script
 - `README.md` – This file
 
 ---
