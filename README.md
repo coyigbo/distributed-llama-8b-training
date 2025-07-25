@@ -1,123 +1,112 @@
-🦙 Distributed LLaMA Training with PEFT, Tensor, and Pipeline Parallelism
+# Distributed LLaMA Training with PEFT, Tensor, and Pipeline Parallelism
+
+[![Made at NYU](https://img.shields.io/badge/Made%20at-NYU-violet)](https://www.nyu.edu)
+[![PyTorch](https://img.shields.io/badge/Framework-PyTorch-orange)](https://pytorch.org)
+[![Training Platform](https://img.shields.io/badge/Training%20Platform-NYU%20HPC-blue)](https://hpc.nyu.edu)
+
+Developed for the **Big Data and Machine Learning Systems** course at **New York University**, this project explores large-scale training of the LLaMA language model using three distributed training strategies. All models were trained using **NYU’s High Performance Computing (HPC)** infrastructure.
+
+---
+
+## Overview
+
+This repository demonstrates three advanced strategies for distributed training of large language models using PyTorch:
+
+1. **Distributed Data Parallel (DDP)** + Parameter-Efficient Fine-Tuning (LoRA)
+2. **Tensor Parallelism**
+3. **Pipeline Parallelism**
+
+---
+
+## Project Structure
+
+├── train_ddp_peft.py # DDP + PEFT training script
+├── train_llama_tp.py # Tensor Parallelism training script
+├── train_llama_pp.py # Pipeline Parallelism training script
+├── data/ # Input text data
+└── README.md # This file
 
 
+---
 
-Developed for the Big Data and Machine Learning Systems course at New York University, this project explores large-scale LLaMA language model training using three distributed strategies. All models were trained using NYU's High Performance Computing (HPC) infrastructure.
+## 1. DDP + Parameter-Efficient Fine-Tuning (LoRA)
 
-📚 Overview
-This project includes three implementations of distributed training for LLaMA models using PyTorch:
+Fine-tunes a LLaMA 3.2B model using PyTorch's DistributedDataParallel (DDP) and LoRA (Low-Rank Adaptation) for memory-efficient adaptation.
 
-Distributed Data Parallel (DDP) + PEFT with LoRA
+**Key Features:**
 
-Tensor Parallelism
+- Model: LLaMA 3.2B with LoRA adapters
+- Distributed Training via PyTorch DDP
+- 8-bit quantization (via `bitsandbytes`)
+- Gradient accumulation (4 steps)
+- Mixed precision training (FP16)
+- Cosine learning rate scheduling
+- Early stopping with configurable patience
+- Gradient clipping
 
-Pipeline Parallelism
+**Monitored Metrics:**
 
-Each approach demonstrates a different strategy for scaling large language model training while optimizing memory usage and performance.
+- Training and validation loss
+- Perplexity
+- Token throughput
+- Learning rate changes
+- Best model checkpointing
 
-📂 Project Structure
-bash
-Copy
-Edit
-.
-├── train_ddp_peft.py          # DDP + PEFT training script
-├── train_llama_tp.py          # Tensor Parallelism training script
-├── train_llama_pp.py          # Pipeline Parallelism training script
-├── data/                      # Input text data
-└── README.md                  # This file
-🔧 Implementation Highlights
-1️⃣ DDP + Parameter-Efficient Fine-Tuning (LoRA)
-Fine-tunes LLaMA 3.2B using PyTorch DDP and LoRA for efficient memory and compute usage.
+---
 
-🧠 Model: LLaMA 3.2B + LoRA adapters
+## 2. LLaMA Training with Tensor Parallelism
 
-⚙️ Strategy: DistributedDataParallel
+Implements tensor parallelism using PyTorch to split model weights column-wise across GPUs.
 
-💾 Memory Optimization:
+**Key Features:**
 
-8-bit quantization (via bitsandbytes)
+- Column-wise tensor parallelism (2 GPUs)
+- Mixed precision (FP16)
+- 8-bit quantization for memory savings
+- Custom text data loader
+- Gradient synchronization across devices
+- Optimizer: AdamW
+- NCCL backend for distributed ops
 
-Gradient accumulation (4 steps)
+---
 
-Mixed-precision (FP16)
+## 3. LLaMA Training with Pipeline Parallelism
 
-📈 Training Techniques:
+Trains LLaMA using PyTorch’s `Pipe` for pipeline parallelism, distributing layers across multiple GPUs.
 
-Cosine LR scheduling
+**Key Features:**
 
-Early stopping
+- Stage-wise model partitioning
+- Gradient checkpointing
+- Mixed precision (FP16)
+- Cosine LR scheduling
+- Gradient clipping
+- Early stopping
+- Full metric tracking and logging
+- Automatic model checkpointing
 
-Gradient clipping
+**Command Line Options:**
 
-📊 Metrics Tracked:
+- `--batch_size`: Training batch size (default: 4)
+- `--epochs`: Number of epochs (default: 3)
+- `--learning_rate`: Initial learning rate (default: 2e-5)
+- `--max_length`: Maximum input sequence length (default: 128)
+- `--validation_split`: Ratio of data used for validation (default: 0.1)
+- `--patience`: Early stopping patience (default: 3)
+- `--max_grad_norm`: Gradient clipping norm (default: 1.0)
 
-Training/validation loss
+---
 
-Perplexity
+## Key Learnings
 
-Token throughput
+- Scalable training using DDP, Tensor, and Pipeline Parallelism
+- Memory-efficient fine-tuning via LoRA and quantization
+- Leveraged HPC infrastructure for LLM training
+- Hands-on experience with distributed PyTorch workflows
 
-Learning rate
+---
 
-Checkpointing best model
+## Acknowledgements
 
-2️⃣ Tensor Parallelism
-Splits LLaMA model weights column-wise across GPUs using PyTorch’s distributed tensor parallel capabilities.
-
-🧠 Parallelism: Column-wise tensor parallelism across 2 GPUs
-
-⚙️ Optimization:
-
-8-bit quantization
-
-Gradient synchronization
-
-Mixed-precision training (FP16)
-
-🧩 Custom Data Loader: Processes multiple text files
-
-🔧 Training Setup:
-
-AdamW optimizer
-
-NCCL backend
-
-📝 Logging: Progress & metrics tracked during training
-
-3️⃣ Pipeline Parallelism
-Implements stage-wise pipeline parallelism using torch.distributed.pipeline.sync.Pipe.
-
-🔗 Model Partitioning: LLaMA layers split across pipeline stages (GPUs)
-
-⚙️ Memory Optimization:
-
-Gradient checkpointing
-
-FP16 precision
-
-📉 Training Stability:
-
-Cosine LR schedule
-
-Early stopping
-
-Gradient clipping
-
-🧪 Custom CLI Options:
-
---batch_size, --epochs, --learning_rate, --patience, --max_grad_norm, etc.
-
-📊 Monitoring: Full metric tracking, validation splitting, and automatic checkpointing
-
-🧠 Key Learnings
-Implemented scalable distributed training architectures using DDP, Tensor, and Pipeline parallelism
-
-Optimized memory and compute using quantization and PEFT (LoRA)
-
-Leveraged NYU’s HPC resources for real-world LLM training at scale
-
-Developed robust logging, metric tracking, and model management tools
-
-📍 Acknowledgements
-This project was completed as part of the Big Data and Machine Learning Systems course at New York University.
-All training was conducted on the NYU High Performance Computing (HPC) cluster.
+This work was completed as part of the **Big Data and Machine Learning Systems** course at **New York University**.  
+Training was conducted on the **NYU High Performance Computing (HPC)** cluster.
