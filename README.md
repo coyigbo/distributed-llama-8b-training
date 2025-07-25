@@ -4,7 +4,7 @@
 [![PyTorch](https://img.shields.io/badge/Framework-PyTorch-orange)](https://pytorch.org)
 [![Training Platform](https://img.shields.io/badge/Training%20Platform-NYU%20HPC-blue)](https://hpc.nyu.edu)
 
-I developed this project as part of the **Big Data and Machine Learning Systems** course at **New York University**. It explores large-scale training of an **8-billion parameter LLaMA language model** using three distributed training strategies. All models were trained on **NYU’s High Performance Computing (HPC)** infrastructure using multiple A100 GPUs.
+I developed this project as part of the **Big Data and Machine Learning Systems** course at **New York University**. It explores large-scale training of an **8-billion parameter LLaMA language model** using three distributed training strategies. All models were trained on **NYU’s High Performance Computing (HPC)** infrastructure using multiple Nvidia A100 GPUs.
 
 ---
 
