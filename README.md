@@ -40,41 +40,6 @@ The training process tracks:
 - Learning rate changes
 - Model checkpoints
 
-## Requirements
-
-```
-torch
-transformers
-peft
-```
-
-## Usage
-
-To run the training:
-
-```bash
-python train_llama_ddp.py
-```
-
-The script automatically:
-
-1. Initializes distributed training environment
-2. Loads and prepares the dataset
-3. Configures the model with LoRA adapters
-4. Executes distributed training
-5. Saves the best model checkpoint
-6. Generates training statistics
-
-## Output
-
-- **Model Checkpoints**: Saved in `best_model_checkpoint/`
-- **Training Statistics**: Saved in `training_stats.json`
-- **Console Output**: Real-time training metrics including:
-  - Loss values
-  - Perplexity
-  - Learning rates
-  - Training progress
-
 ## Implementation Details
 
 ### Data Processing
