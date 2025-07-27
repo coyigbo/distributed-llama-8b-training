@@ -83,16 +83,6 @@ Trains LLaMA using PyTorch’s `Pipe` for pipeline parallelism, distributing lay
 - Full metric tracking and logging
 - Automatic model checkpointing
 
-**Command Line Options:**
-
-- `--batch_size`: Training batch size (default: 4)
-- `--epochs`: Number of epochs (default: 3)
-- `--learning_rate`: Initial learning rate (default: 2e-5)
-- `--max_length`: Maximum input sequence length (default: 128)
-- `--validation_split`: Ratio of data used for validation (default: 0.1)
-- `--patience`: Early stopping patience (default: 3)
-- `--max_grad_norm`: Gradient clipping norm (default: 1.0)
-
 ---
 
 ## Key Learnings
